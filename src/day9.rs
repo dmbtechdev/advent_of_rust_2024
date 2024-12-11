@@ -18,16 +18,29 @@ impl Snowball {
         Snowball(snowballs)
     }
 }
-impl From<SnowKg> for Snowball {
-    // 1. Implement the conversion from SnowKg to Snowball
-    fn from(snowball:SnowKg) -> Self {
-        Self::new((snowball.0/SNOWBALL_WEIGHT_KG).round()  as i64)
+// impl From<SnowKg> for Snowball {
+//     // 1. Implement the conversion from SnowKg to Snowball
+//     fn from(snowball:SnowKg) -> Self {
+//         Self::new((snowball.0/SNOWBALL_WEIGHT_KG).round()  as i64)
+//     }
+// }
+// // 2. Implement the same for SnowLb
+// impl From<SnowLb> for Snowball {
+//     // 1. Implement the conversion from SnowKg to Snowball
+//     fn from(snowball:SnowLb) -> Self {
+//         Self::new((snowball.0/SNOWBALL_WEIGHT_LB).round()  as i64)
+//     }
+// }
+
+impl Into<Snowball> for SnowKg {
+    fn into(self) -> Snowball {
+        Snowball::new((self.0 / SNOWBALL_WEIGHT_KG).round() as i64)
     }
 }
-// 2. Implement the same for SnowLb
-impl From<SnowLb> for Snowball {
-    // 1. Implement the conversion from SnowKg to Snowball
-    fn from(snowball:SnowLb) -> Self {
-        Self::new((snowball.0/SNOWBALL_WEIGHT_LB).round()  as i64)
+
+impl Into<Snowball> for SnowLb {
+    fn into(self) -> Snowball {
+        Snowball::new((self.0 / SNOWBALL_WEIGHT_LB).round() as i64)
     }
 }
+
